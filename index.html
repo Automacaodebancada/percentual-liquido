@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Marketplace</title>
+<style>
+body{
+font-family: Arial, Helvetica, sans-serif;
+background:#f4f6f8;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.calculator{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 15px rgba(0,0,0,0.15);
+width:320px;
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+label{
+font-weight:bold;
+font-size:14px;
+}
+
+input{
+width:100%;
+padding:8px;
+margin-top:5px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:10px;
+font-size:16px;
+border:none;
+border-radius:6px;
+background:#2c7be5;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#1a68d1;
+}
+
+.result{
+margin-top:15px;
+padding:10px;
+background:#eef3ff;
+border-radius:6px;
+text-align:center;
+font-size:18px;
+font-weight:bold;
+}
+
+.equation{
+font-size:13px;
+text-align:center;
+margin-bottom:15px;
+color:#666;
+}
+</style>
+</head>
+<body>
+
+<div class="calculator">
+<h2>Calculadora Marketplace</h2>
+
+<div class="equation">
+V = (P - C - (T × P) - F) ÷ P
+</div>
+
+<label>Preço do produto (P)</label>
+<input type="number" id="p" step="0.01">
+
+<label>Custo do produto (C)</label>
+<input type="number" id="c" step="0.01">
+
+<label>Taxa do marketplace (T)</label>
+<input type="number" id="t" step="0.01" placeholder="Ex: 0.12 para 12%">
+
+<label>Frete (F)</label>
+<input type="number" id="f" step="0.01">
+
+<button onclick="calcular()">Calcular</button>
+
+<div class="result" id="resultado">Resultado: --</div>
+</div>
+
+<script>
+function calcular(){
+
+let p = parseFloat(document.getElementById('p').value);
+let c = parseFloat(document.getElementById('c').value);
+let t = parseFloat(document.getElementById('t').value);
+let f = parseFloat(document.getElementById('f').value);
+
+if(isNaN(p)||isNaN(c)||isNaN(t)||isNaN(f)){
+alert("Preencha todos os campos");
+return;
+}
+
+let v = (p - c - (t * p) - f) / p;
+
+let percentual = (v * 100).toFixed(2);
+
+
+document.getElementById('resultado').innerHTML = "Lucro Percentual (V): " + percentual + "%";
+
+}
+</script>
+
+</body>
+</html>
